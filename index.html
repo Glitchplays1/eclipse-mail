@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eclipse Mail</title>
+<style>
+:root { --bg:#f6f8fc; --accent:#1a73e8; --text:#202124; --muted:#5f6368; --hover:#f1f3f4; --border:#e0e0e0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); height:100vh; overflow:hidden; display:flex; flex-direction:column; }
+#login-screen { display:flex; align-items:center; justify-content:center; height:100vh; background:linear-gradient(135deg,#f6f8fc,#e8f0fe); }
+.login-card { background:#fff; padding:40px; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,.08); max-width:420px; width:90%; text-align:center; }
+.login-card h1 { color:var(--accent); margin-bottom:8px; }
+.login-card input { width:100%; padding:12px; margin:8px 0; border:1px solid var(--border); border-radius:8px; font-size:16px; }
+.login-card button { width:100%; padding:12px; background:var(--accent); color:#fff; border:none; border-radius:8px; margin-top:8px; cursor:pointer; font-weight:500; }
+.skip-btn { background:transparent !important; color:var(--accent) !important; border:1px solid var(--accent) !important; }
+header { display:none; align-items:center; padding:8px 16px; background:#fff; border-bottom:1px solid var(--border); height:64px; gap:16px; }
+.logo span { color:var(--accent); }
+.search-bar { flex:1; max-width:720px; background:var(--bg); border-radius:24px; display:flex; align-items:center; padding:0 16px; height:48px; }
+.search-bar input { border:none; background:transparent; flex:1; outline:none; font-size:16px; }
+main { display:none; flex:1; overflow:hidden; }
+aside { width:256px; background:#fff; padding:8px; border-right:1px solid var(--border); }
+.compose-btn { background:#c2e7ff; color:#001d35; border:none; border-radius:16px; padding:16px 24px; margin:8px; cursor:pointer; font-weight:500; }
+.nav-item { display:flex; align-items:center; padding:0 24px; height:32px; border-radius:0 16px 16px 0; cursor:pointer; gap:12px; }
+.nav-item.active { background:#d3e3fd; font-weight:700; }
+.email-row { display:flex; align-items:center; padding:0 16px; height:40px; border-bottom:1px solid #f1f3f4; cursor:pointer; }
+.email-row.unread { font-weight:700; }
+.app-visible header, .app-visible main { display:flex; }
+.app-visible #login-screen { display:none; }
+</style>
+</head>
+<body>
+<div id="login-screen">
+  <div class="login-card">
+    <h1>Eclipse Mail</h1>
+    <p>Optional secure account — skip anytime.</p>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="enterApp()">Sign In</button>
+    <button class="skip-btn" onclick="enterApp()">Continue without account</button>
+    <p style="font-size:12px;color:#5f6368;margin-top:12px;">Pairs with eclipse-accounts (Argon2id + TOTP). Demo only.</p>
+  </div>
+</div>
+<header>
+  <div class="logo">Eclipse <span>Mail</span></div>
+  <div class="search-bar"><input placeholder="Search mail"></div>
+  <div class="user-avatar" style="width:32px;height:32px;border-radius:50%;background:#1a73e8;color:#fff;display:flex;align-items:center;justify-content:center;">E</div>
+</header>
+<main>
+  <aside>
+    <button class="compose-btn">Compose</button>
+    <div class="nav-item active">Inbox</div>
+    <div class="nav-item">Starred</div>
+    <div class="nav-item">Sent</div>
+    <div class="nav-item">Drafts</div>
+  </aside>
+  <div style="flex:1;background:#fff;overflow:auto;">
+    <div class="email-row unread"><div style="width:200px">Alex Rivera</div><div style="flex:1">Science project update</div><div>10:32 AM</div></div>
+    <div class="email-row"><div style="width:200px">Library</div><div style="flex:1">Book reservation ready</div><div>Yesterday</div></div>
+    <div class="email-row unread"><div style="width:200px">Coach Taylor</div><div style="flex:1">Practice schedule</div><div>Oct 26</div></div>
+  </div>
+</main>
+<script>
+function enterApp(){ document.body.classList.add('app-visible'); }
+</script>
+</body>
+</html>
